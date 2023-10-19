@@ -9,7 +9,6 @@ export default {
       colors: {
         //primary
         'bright-blue': 'hsl(220, 98%, 61%)',
-        'check-background': 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))',
         //ligthTheme
         'very-light-gray': 'hsl(0, 0%, 98%)',
         'very-light-grayish-blue': 'hsl(236, 33%, 92%)',
