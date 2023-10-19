@@ -8,17 +8,32 @@ export const App = () => {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      name: 'Salvar al mundo',
+      name: 'Complete online JavaScript course',
       complete: false,
     },
     {
       id: 2,
-      name: 'Aprender react',
+      name: 'Jog around th park 3x',
       complete: false,
     },
     {
       id: 3,
-      name: 'conseguir trabajo',
+      name: '10 minutes meditation',
+      complete: false,
+    },
+    {
+      id: 4,
+      name: 'Read for hour',
+      complete: false,
+    },
+    {
+      id: 5,
+      name: 'Pick up groceries',
+      complete: false,
+    },
+    {
+      id: 6,
+      name: 'Complete Todo App on Frontend Mentor',
       complete: false,
     },
   ])
