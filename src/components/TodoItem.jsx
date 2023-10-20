@@ -38,7 +38,7 @@
                 ) : null}
                 </button>
                 <input
-                    className={`outline-none h-10 w-full ${todo.complete ? 'line-through text-dark-grayish-blue' : ''} transition-all duration-500`} 
+                    className={`outline-none h-10 w-full ${isFocused || isHovered ? 'w-4/5' : 'w-full'} ${todo.complete ? 'line-through text-dark-grayish-blue' : ''} transition-all duration-500`} 
                     type="text"
                     defaultValue={todo.name}/>
                 {
