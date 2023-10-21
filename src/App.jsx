@@ -89,6 +89,10 @@ export const App = () => {
     setIsAllComplete(complete);
   }
 
+  const reorderTodos = (reorderedTodos) => {
+    setTodos(reorderedTodos);
+  };
+
   
   const clearComplete = () => {
     const updatedTodos = todos.filter( todo => !todo.complete);
@@ -119,13 +123,14 @@ export const App = () => {
       </section>
 
       <section className="bg-very-light-gray h-60vh relative flex flex-col items-center">
-        <div className='relative transform translate-y-[-11rem] max-w-[21rem] sm:min-w-[30rem]'>
+        <div className='relative top-[-11rem] max-w-[21rem] sm:min-w-[30rem]'>
           <Search 
               onAddTodo = {addTodo } 
               onChangeAllTodos = { changeAllTodos}
               isAllComplete={isAllComplete} />
           <TodoList 
             todos= {filteredTodos}
+            onReorderTodos={reorderTodos}
             onDeleteTodo = { deleteTodo }
             onFilterChange={handleFilterChange} 
             onUpdateTodo={updateTodo}
