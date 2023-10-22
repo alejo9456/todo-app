@@ -34,10 +34,10 @@ export default {
         'bold': '700'
       },
       backgroundImage: {
-        'desktop-light': "url('./src/assets/bg-desktop-light.jpg')",
-        'mobile-light': "url('./src/assets/bg-mobile-light.jpg')",
-        'desktop-dark': "url('./src/assets/bg-desktop-dark.jpg')",
-        'mobile-dark': "url('./src/assets/bg-mobile-dark.jpg')"
+        'desktop-light': "url('bg-desktop-light.jpg')",
+        'mobile-light': "url('bg-mobile-light.jpg')",
+        'desktop-dark': "url('bg-desktop-dark.jpg')",
+        'mobile-dark': "url('bg-mobile-dark.jpg')"
       }
     },
   },

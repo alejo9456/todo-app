@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { AddTodo, Search, TodoList } from './components';
+import { AddTodo, TodoList } from './components';
 import './utils/darkMode';
 
 
