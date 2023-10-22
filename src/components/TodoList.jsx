@@ -22,7 +22,7 @@ export const TodoList = ( { isMobile, todos,onReorderTodos, onDeleteTodo, onFilt
             <ul
               {...provided.droppableProps}
               ref={provided.innerRef}
-              className="text-very-dark-grayish-blue relative bg-white dark:bg-very-dark-desaturated-blue"
+              className="rounded-t-lg text-very-dark-grayish-blue relative bg-white dark:bg-very-dark-desaturated-blue"
             >
               {todos.map((todo, index) => (
                 <Draggable key={todo.id.toString()} draggableId={todo.id.toString()} index={index}>
