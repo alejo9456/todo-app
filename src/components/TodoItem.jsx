@@ -51,7 +51,7 @@
           }, [todo]);
 
         return (
-            <article className="flex items-center w-full  rounded-t-lg px-5 py-2 border-b bg-inherit border-light-grayish-blue dark:border-dark-grayish-blue"
+            <div className="flex items-center w-full  rounded-t-lg px-5 py-2 border-b bg-inherit border-light-grayish-blue dark:border-dark-grayish-blue"
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
@@ -103,6 +103,6 @@
                             <img src={cross} alt="Cross"/>
                         </button>    
                     )}
-            </article>
+            </div>
         )
     };
