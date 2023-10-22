@@ -1,32 +1,13 @@
 
 import { useEffect, useState } from 'react';
 import { Search, TodoList } from './components';
+import './utils/darkMode';
 
 
 export const App = () => {
-  const [theme, setTheme] = useState(localStorage.theme || 'dark');
+  const savedTheme = localStorage.theme;
+  const [theme, setTheme] = useState(savedTheme || 'dark');
   const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      const mobile = window.innerWidth <= 480;
-      setIsMobile(mobile);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
- 
-  const toggleThemeMode = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.theme = newTheme;
-    document.documentElement.classList.toggle('dark');
-  };
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -59,6 +40,42 @@ export const App = () => {
       complete: false,
     },
   ]);
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 480;
+      setIsMobile(mobile);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const savedTodos = localStorage.getItem('todos');
+  
+    if (savedTodos) {
+      setTodos(JSON.parse(savedTodos));
+    }
+  
+  }, [])
+  
+
+  useEffect(()=>{
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos])
+ 
+  const toggleThemeMode = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.theme = newTheme;
+    document.documentElement.classList.toggle('dark');
+  };
+  
 
   const [filter, setFilter] = useState('all');
 
