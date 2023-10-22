@@ -32,7 +32,7 @@ export const Search = ({ onAddTodo, onChangeAllTodos, isAllComplete, theme, onTo
             <div className='flex items-center w-full bg-white dark:bg-very-dark-desaturated-blue rounded-lg px-5 py-2'>
                 <button
                     onClick={ handleAllComplete }
-                    className={`relative flex justify-between rounded-full border p-2 hover:border-check cursor-pointer mr-5 ${isAllComplete ? 'bg-gradient-to-r from-primary-check to-secondary-check' : ''
+                    className={`relative flex justify-between rounded-full border border-light-grayish-blue dark:border-dark-grayish-blue p-2 hover:border-bright-blue dark:hover:hover:border-bright-blue cursor-pointer mr-5 ${isAllComplete ? 'bg-gradient-to-r from-primary-check to-secondary-check' : ''
                     }`}
                     >
                     {isAllComplete ? (

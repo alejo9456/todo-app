@@ -1,14 +1,26 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Search, TodoList } from './components';
 
-// if (!localStorage.theme) {
-//   localStorage.theme = 'dark';
-// }
 
 export const App = () => {
   const [theme, setTheme] = useState(localStorage.theme || 'dark');
-  console.log(theme);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 480;
+      setIsMobile(mobile);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+ 
   const toggleThemeMode = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
@@ -116,6 +128,7 @@ export const App = () => {
               onToggleTheme = { toggleThemeMode }
               isAllComplete={isAllComplete} />
           <TodoList
+            isMobile = { isMobile}
             todos= {filteredTodos}
             onReorderTodos={reorderTodos}
             onDeleteTodo = { deleteTodo }

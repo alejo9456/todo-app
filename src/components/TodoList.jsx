@@ -2,7 +2,7 @@ import { TodoItem } from "./TodoItem"
 import { TodoOptions } from "./TodoOptions"
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 
-export const TodoList = ( { todos,onReorderTodos, onDeleteTodo, onFilterChange, onUpdateTodo, onClearComplete, onIncompleteTodos }) => {
+export const TodoList = ( { isMobile, todos,onReorderTodos, onDeleteTodo, onFilterChange, onUpdateTodo, onClearComplete, onIncompleteTodos }) => {
   const onDragEnd = (result) => {
     if (!result.destination) {
       return; 
@@ -41,7 +41,7 @@ export const TodoList = ( { todos,onReorderTodos, onDeleteTodo, onFilterChange, 
           )}
         </Droppable>
       </DragDropContext>
-      <TodoOptions className="hidden" size={onIncompleteTodos()} onFilterChange={onFilterChange} onClearComplete={onClearComplete} />
+      <TodoOptions isMobile={isMobile} className="hidden" size={onIncompleteTodos()} onFilterChange={onFilterChange} onClearComplete={onClearComplete} />
     </section>
   )
 }

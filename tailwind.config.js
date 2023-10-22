@@ -29,10 +29,6 @@ export default {
         'primary-check': 'hsl(192, 100%, 67%)',
         'secondary-check': 'hsl(280, 87%, 65%)'
       },
-      height: {
-        '40vh': '40vh',
-        '60vh': '60vh',
-      },
       fontWeight:{
         'ligth': '400',
         'bold': '700'

@@ -51,7 +51,7 @@
           }, [todo]);
 
         return (
-            <article className="flex items-center w-full  rounded-t-lg px-5 py-2 border-b bg-inherit"
+            <article className="flex items-center w-full  rounded-t-lg px-5 py-2 border-b bg-inherit border-light-grayish-blue dark:border-dark-grayish-blue"
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
@@ -63,7 +63,7 @@
             >
                 <button
                 onClick={handleCheckboxChange}
-                className={`relative flex justify-between rounded-full border p-2 hover:bg-check-background border-gray-300 dark:border-dark-grayish-blue cursor-pointer mr-5 ${
+                className={`relative flex justify-between rounded-full border border-light-grayish-blue dark:border-dark-grayish-blue p-2 hover:border-bright-blue dark:hover:hover:border-bright-blue cursor-pointer mr-5 ${
                     todo.complete ? 'bg-gradient-to-r from-primary-check to-secondary-check' : ''
                 }`}
                 >
