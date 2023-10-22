@@ -15,14 +15,14 @@ export const TodoList = ( { todos,onReorderTodos, onDeleteTodo, onFilterChange, 
   };
   
   return (
-        <section className="bg-very-light-gray rounded-md shadow-md mb-3">
+      <section className='container relative items-center px-4 mx-auto md:max-w-xl'>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="todos">
           {(provided) => (
             <ul
               {...provided.droppableProps}
               ref={provided.innerRef}
-              className="text-very-dark-grayish-blue"
+              className="text-very-dark-grayish-blue relative bg-white dark:bg-very-dark-desaturated-blue"
             >
               {todos.map((todo, index) => (
                 <Draggable key={todo.id.toString()} draggableId={todo.id.toString()} index={index}>
@@ -41,7 +41,7 @@ export const TodoList = ( { todos,onReorderTodos, onDeleteTodo, onFilterChange, 
           )}
         </Droppable>
       </DragDropContext>
-      <TodoOptions size={onIncompleteTodos()} onFilterChange={onFilterChange} onClearComplete={onClearComplete} />
+      <TodoOptions className="hidden" size={onIncompleteTodos()} onFilterChange={onFilterChange} onClearComplete={onClearComplete} />
     </section>
   )
 }

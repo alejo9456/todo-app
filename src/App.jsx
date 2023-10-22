@@ -1,11 +1,20 @@
 
-import { useEffect, useState } from 'react';
-import lightDesktopBackgroundImage  from './assets/bg-desktop-light.jpg';
-import lightMobileBackgroundImage  from './assets/bg-mobile-light.jpg';
+import { useState } from 'react';
 import { Search, TodoList } from './components';
 
+// if (!localStorage.theme) {
+//   localStorage.theme = 'dark';
+// }
 
 export const App = () => {
+  const [theme, setTheme] = useState(localStorage.theme || 'dark');
+  console.log(theme);
+  const toggleThemeMode = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.theme = newTheme;
+    document.documentElement.classList.toggle('dark');
+  };
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -39,26 +48,9 @@ export const App = () => {
     },
   ]);
 
-  const [isMobile, setIsMobile] = useState(false);
-
   const [filter, setFilter] = useState('all');
 
   const [isAllComplete, setIsAllComplete] = useState(false);
-
-
-  useEffect(() => {
-    
-    const handleResize = () =>{
-      setIsMobile(window.innerWidth < 480);
-    }
-    
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    }
-  }, [])
   
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
@@ -114,21 +106,16 @@ export const App = () => {
   })
 
   return (
-    <main className="h-screen relative bg-very-light-gray">
+    <main className='min-h-screen relative bg-very-light-gray dark:bg-very-dark-blue bg-mobile-light transition-all duration-300  md:bg-desktop-light dark:bg-mobile-dark md:dark:bg-desktop-dark bg-no-repeat bg-contain'>
 
-      <section className='h-40vh relative flex justify-center items-center'>
-        <img 
-          className="h-full w-full absolute object-cover object-center"
-          src={ isMobile? lightMobileBackgroundImage : lightDesktopBackgroundImage } alt="image-background" />
-      </section>
-
-      <section className="bg-very-light-gray h-60vh relative flex flex-col items-center">
-        <div className='relative top-[-11rem] max-w-[21rem] sm:min-w-[30rem]'>
-          <Search 
+      <section className= 'container relative flex flex-col items-center mx-auto px-4 pt-8 md:max-w-xl'>
+          <Search
+              theme = { theme } 
               onAddTodo = {addTodo } 
               onChangeAllTodos = { changeAllTodos}
+              onToggleTheme = { toggleThemeMode }
               isAllComplete={isAllComplete} />
-          <TodoList 
+          <TodoList
             todos= {filteredTodos}
             onReorderTodos={reorderTodos}
             onDeleteTodo = { deleteTodo }
@@ -137,10 +124,9 @@ export const App = () => {
             onClearComplete={ clearComplete }
             onIncompleteTodos={countIncompleteTodos}
           />
-          <footer className='text-dark-grayish-blue flex justify-center'>
+          <footer className=' text-dark-grayish-blue flex justify-center bg-inherit'>
             Drag and drog to reorder list
           </footer>
-        </div>    
       </section>
 
     </main>

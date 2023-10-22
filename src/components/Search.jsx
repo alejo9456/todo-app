@@ -1,9 +1,9 @@
-
 import { useState } from 'react';
-import darkButtonImage from '../assets/icon-moon.svg';
+import moonButtonImage from '../assets/icon-moon.svg';
+import sunButtonImage from '../assets/icon-sun.svg';
 import check from '../assets/icon-check.svg'
 
-export const Search = ({ onAddTodo, onChangeAllTodos, isAllComplete }) => {
+export const Search = ({ onAddTodo, onChangeAllTodos, isAllComplete, theme, onToggleTheme }) => {
     const [newTodo, setNewTodo] = useState(''); 
     
     const handleAllComplete = () => {
@@ -21,17 +21,18 @@ export const Search = ({ onAddTodo, onChangeAllTodos, isAllComplete }) => {
         }
     }
     return (
-        <header className="relative z-10 mb-6">
+        <header className="container mx-auto px-4 pt-8 md:max-w-xl z-10 mb-6">
             <div className="flex items-center justify-between mb-6">
             <h1 className="items-center justify-center text-5xl font-bold mb-0 text-white tracking-[1rem]">TODO</h1>
-            <span className="z-20">
-                <img src={ darkButtonImage } alt="" />
+            <span className="z-20 cursor-pointer"
+                onClick={ onToggleTheme }>
+                <img src={ theme === 'dark' ? (sunButtonImage): (moonButtonImage) } alt="" />
             </span>
             </div>
-            <div className="flex items-center w-full bg-white rounded-lg px-5 py-2">
+            <div className='flex items-center w-full bg-white dark:bg-very-dark-desaturated-blue rounded-lg px-5 py-2'>
                 <button
                     onClick={ handleAllComplete }
-                    className={`relative flex justify-between rounded-full border p-2 border-gray-300 cursor-pointer mr-5 ${isAllComplete ? 'bg-check-background' : ''
+                    className={`relative flex justify-between rounded-full border p-2 hover:border-check cursor-pointer mr-5 ${isAllComplete ? 'bg-gradient-to-r from-primary-check to-secondary-check' : ''
                     }`}
                     >
                     {isAllComplete ? (
@@ -43,7 +44,7 @@ export const Search = ({ onAddTodo, onChangeAllTodos, isAllComplete }) => {
                     ) : null}
                 </button>
                 <input 
-                    className="outline-none h-10"
+                    className="outline-none h-10 bg-inherit dark:text-light-grayish-blue"
                     type="text"
                     placeholder="Create a new todo..."
                     value= { newTodo}

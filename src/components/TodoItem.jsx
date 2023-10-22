@@ -51,7 +51,7 @@
           }, [todo]);
 
         return (
-            <div className="flex items-center w-full bg-white rounded-t-lg px-5 py-2 border-b"
+            <article className="flex items-center w-full  rounded-t-lg px-5 py-2 border-b bg-inherit"
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
@@ -63,8 +63,8 @@
             >
                 <button
                 onClick={handleCheckboxChange}
-                className={`relative flex justify-between rounded-full border p-2 border-gray-300 cursor-pointer mr-5 ${
-                    todo.complete ? 'bg-check-background' : ''
+                className={`relative flex justify-between rounded-full border p-2 hover:bg-check-background border-gray-300 dark:border-dark-grayish-blue cursor-pointer mr-5 ${
+                    todo.complete ? 'bg-gradient-to-r from-primary-check to-secondary-check' : ''
                 }`}
                 >
                 {todo.complete ? (
@@ -77,7 +77,7 @@
                 </button>
                 {isEditing ? (
                     <input
-                        className={`outline-none h-10 ${isFocused || isHovered ? 'w-4/5' : 'w-full'} ${todo.complete ? 'line-through text-dark-grayish-blue' : ''} transition-all duration-500`}
+                        className={`bg-inherit outline-none h-10 ${isFocused || isHovered ? 'w-4/5' : 'w-full'} ${todo.complete ? 'line-through text-dark-grayish-blue' : ''} transition-all duration-500`}
                         type="text"
                         value={editText}
                         onBlur={handleBlur}
@@ -87,7 +87,7 @@
                             />
                         ) : (
                     <div
-                        className={`flex items-center outline-none h-10 ${isFocused || isHovered ? 'w-4/5' : 'w-full'} ${todo.complete ? 'line-through text-dark-grayish-blue' : ''} transition-all duration-500`}
+                        className={`flex items-center outline-none h-10 ${isFocused || isHovered ? 'w-4/5' : 'w-full'} ${todo.complete ? 'line-through text-dark-grayish-blue dark:text-light-grayish-blue-hover' : 'dark:text-light-grayish-blue'} transition-all duration-500`}
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
                         >
@@ -103,6 +103,6 @@
                             <img src={cross} alt="Cross"/>
                         </button>    
                     )}
-            </div>
+            </article>
         )
     };
