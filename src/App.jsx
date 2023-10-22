@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { Search, TodoList } from './components';
+import { AddTodo, Search, TodoList } from './components';
 import './utils/darkMode';
 
 
@@ -138,7 +138,7 @@ export const App = () => {
     <main className='min-h-screen relative bg-very-light-gray dark:bg-very-dark-blue bg-mobile-light transition-all duration-300  md:bg-desktop-light dark:bg-mobile-dark md:dark:bg-desktop-dark bg-no-repeat bg-contain'>
 
       <section className= 'container relative flex flex-col items-center mx-auto px-4 pt-8 md:max-w-xl'>
-          <Search
+          <AddTodo
               theme = { theme } 
               onAddTodo = {addTodo } 
               onChangeAllTodos = { changeAllTodos}

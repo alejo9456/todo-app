@@ -3,7 +3,7 @@ import moonButtonImage from '../assets/icon-moon.svg';
 import sunButtonImage from '../assets/icon-sun.svg';
 import check from '../assets/icon-check.svg'
 
-export const Search = ({ onAddTodo, onChangeAllTodos, isAllComplete, theme, onToggleTheme }) => {
+export const AddTodo = ({ onAddTodo, onChangeAllTodos, isAllComplete, theme, onToggleTheme }) => {
     const [newTodo, setNewTodo] = useState(''); 
     
     const handleAllComplete = () => {
